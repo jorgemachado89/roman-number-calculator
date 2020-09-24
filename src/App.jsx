@@ -10,12 +10,12 @@ function App() {
   const [romanValue, setRomanValue] = useState('');
   const [integerValue, setIntegerValue] = useState(0);
   const [invalidInput, setInvalidInput] = useState(false);
-
+  
   const validateInput = (value, cb) => {
     setInvalidInput(false);
     cb(value);
   }
-
+  
   const onInputChange = (convertedValue, isRoman) => {
     try {
       if (isRoman) {
@@ -25,7 +25,7 @@ function App() {
         });
       } else {
         const toIntInput = Number(convertedValue);
-
+        
         setIntegerValue(toIntInput);
         toRoman(toIntInput, (value) => {
           validateInput(value, setRomanValue);
@@ -36,14 +36,14 @@ function App() {
       // console.error(error);
     }
   };
-
+  
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <section>
           <div className="ErrorInputContainer">
-            {invalidInput && <span className="ErrorInput">Please check inputs for errors.</span>}
+              {invalidInput && <span className="ErrorInput">Please check inputs for errors.</span>}
           </div>
           <div className="InputValues">
             <InputCovertions inputLabel={"Roman Number "} valueToConvert={romanValue} isRoman={true} cb={onInputChange} />
@@ -54,5 +54,6 @@ function App() {
     </div>
   );
 }
-
+  
 export default App;
+  

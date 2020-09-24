@@ -3,7 +3,7 @@ const ROMAN_NUMBERS = {
 };
 
 const DIGIT_NUMBERS = {
-  1000: 'M', 900: 'CM', 500: 'D', 400: 'CD', 100: 'C', 90: 'XC', 50: 'L', 40: 'XL', 10: 'X', 9: 'IX', 5: 'V', 4: 'IV', 1: 'I'
+	1000: 'M', 900: 'CM', 500: 'D', 400: 'CD', 100: 'C', 90: 'XC', 50: 'L', 40: 'XL', 10: 'X', 9: 'IX', 5: 'V', 4: 'IV', 1: 'I'
 }
 
 export const romanToInt = function(romanNum, cb) {
@@ -21,21 +21,21 @@ export const romanToInt = function(romanNum, cb) {
 		const followingRomanLetter = romanNumArr[index + 1];
 		const nextValue = ROMAN_NUMBERS[followingRomanLetter];
 
-	    acc = currentValue < nextValue ? acc -= currentValue : acc += currentValue;
-	    
-	    return acc;
+		acc = currentValue < nextValue ? acc -= currentValue : acc += currentValue;
+
+		return acc;
 	}, 0);
 
 	cb(convertedNum);
 };
 
 const findClosest = (num, multiplier) => {
-  const BIGGEST_ROMAN_NUMBER = 1000;
+	const BIGGEST_ROMAN_NUMBER = 1000;
 
 	if (DIGIT_NUMBERS[num * multiplier] !== undefined) {
 		return num * multiplier;
 	}
-  
+
 	if (num * multiplier > BIGGEST_ROMAN_NUMBER) {
 		return BIGGEST_ROMAN_NUMBER;
 	}
@@ -52,8 +52,8 @@ export const addTillEqual = (digit, multiplier, acc = '') => {
 	if (closestNum === numberMultiplied) {
 	    return acc;	
 	} else if (numberMultiplied > BIGGEST_ROMAN_NUMBER) {
-      const subtracted = numberMultiplied - BIGGEST_ROMAN_NUMBER;
-      multiplier = Math.pow(10, String(subtracted).length - 1);
+		const subtracted = numberMultiplied - BIGGEST_ROMAN_NUMBER;
+		multiplier = Math.pow(10, String(subtracted).length - 1);
 	    return addTillEqual(subtracted / multiplier, multiplier, acc);
   	} else {
 		return addTillEqual(digit - (closestNum / multiplier), multiplier, acc);
