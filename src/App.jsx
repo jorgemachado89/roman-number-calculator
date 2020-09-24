@@ -33,7 +33,6 @@ function App() {
       }
     } catch(error) {
       setInvalidInput(true);
-      // console.error(error);
     }
   };
   
@@ -43,7 +42,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <section>
           <div className="ErrorInputContainer">
-              {invalidInput && <span className="ErrorInput">Please check inputs for errors.</span>}
+            {invalidInput && <span className="ErrorInput">Please check inputs for errors.</span>}
           </div>
           <div className="InputValues">
             <InputCovertions inputLabel={"Roman Number "} valueToConvert={romanValue} isRoman={true} cb={onInputChange} />
