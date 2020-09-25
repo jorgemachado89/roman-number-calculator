@@ -50,12 +50,12 @@ export const addTillEqual = (digit, multiplier, acc = '') => {
 	acc = acc.concat(DIGIT_NUMBERS[closestNum]);
   
 	if (closestNum === numberMultiplied) {
-	    return acc;	
+		return acc;	
 	} else if (numberMultiplied > BIGGEST_ROMAN_NUMBER) {
 		const subtracted = numberMultiplied - BIGGEST_ROMAN_NUMBER;
 		multiplier = Math.pow(10, String(subtracted).length - 1);
-	    return addTillEqual(subtracted / multiplier, multiplier, acc);
-  	} else {
+		return addTillEqual(subtracted / multiplier, multiplier, acc);
+	} else {
 		return addTillEqual(digit - (closestNum / multiplier), multiplier, acc);
 	}
 }
@@ -70,9 +70,9 @@ export const intToRoman = (intNum, cb) => {
 	const convertedNum = intNumArr.reduce((acc, intDigit, index, array) => {
 		const mutiplier = Math.pow(10, array.length - index - 1);
 		if (intDigit === '0') {
-		  return acc;
+			return acc;
 		} else {
-		  return acc.concat(addTillEqual(Number(intDigit), mutiplier));
+			return acc.concat(addTillEqual(Number(intDigit), mutiplier));
 		}
 	}, '');
 
