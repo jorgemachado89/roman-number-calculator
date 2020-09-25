@@ -2,6 +2,8 @@ const ROMAN_NUMBERS = {
 	M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1
 };
 
+const BIGGEST_ROMAN_NUMBER = 1000;
+
 const DIGIT_NUMBERS = {
 	1000: 'M', 900: 'CM', 500: 'D', 400: 'CD', 100: 'C', 90: 'XC', 50: 'L', 40: 'XL', 10: 'X', 9: 'IX', 5: 'V', 4: 'IV', 1: 'I'
 }
@@ -30,7 +32,6 @@ export const romanToInt = function(romanNum, cb) {
 };
 
 const findClosest = (num, multiplier) => {
-	const BIGGEST_ROMAN_NUMBER = 1000;
 	const multipliedNum = num * multiplier;
 
 	if (DIGIT_NUMBERS[multipliedNum] !== undefined) {
@@ -45,7 +46,6 @@ const findClosest = (num, multiplier) => {
 }
 
 export const addTillEqual = (digit, multiplier, acc = '') => {
-	const BIGGEST_ROMAN_NUMBER = 1000;
 	const numberMultiplied = digit * multiplier;
 	const closestNum = findClosest(digit, multiplier);
 
