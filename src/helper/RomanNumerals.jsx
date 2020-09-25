@@ -31,12 +31,13 @@ export const romanToInt = function(romanNum, cb) {
 
 const findClosest = (num, multiplier) => {
 	const BIGGEST_ROMAN_NUMBER = 1000;
+	const multipliedNum = num * multiplier;
 
-	if (DIGIT_NUMBERS[num * multiplier] !== undefined) {
-		return num * multiplier;
+	if (DIGIT_NUMBERS[multipliedNum] !== undefined) {
+		return multipliedNum;
 	}
 
-	if (num * multiplier > BIGGEST_ROMAN_NUMBER) {
+	if (multipliedNum > BIGGEST_ROMAN_NUMBER) {
 		return BIGGEST_ROMAN_NUMBER;
 	}
 
@@ -47,6 +48,7 @@ export const addTillEqual = (digit, multiplier, acc = '') => {
 	const BIGGEST_ROMAN_NUMBER = 1000;
 	const numberMultiplied = digit * multiplier;
 	const closestNum = findClosest(digit, multiplier);
+
 	acc = acc.concat(DIGIT_NUMBERS[closestNum]);
   
 	if (closestNum === numberMultiplied) {
@@ -54,6 +56,7 @@ export const addTillEqual = (digit, multiplier, acc = '') => {
 	} else if (numberMultiplied > BIGGEST_ROMAN_NUMBER) {
 		const subtracted = numberMultiplied - BIGGEST_ROMAN_NUMBER;
 		multiplier = Math.pow(10, String(subtracted).length - 1);
+
 		return addTillEqual(subtracted / multiplier, multiplier, acc);
 	} else {
 		return addTillEqual(digit - (closestNum / multiplier), multiplier, acc);
